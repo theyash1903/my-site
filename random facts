@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Stuff</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     body {
@@ -81,21 +82,20 @@
   <div class="page">
 
     <h1>Random Stuff</h1>
+
     <p class="intro">
       A website for facts you probably didn't need to know.
     </p>
 
     <div class="box">
-      <div class="small-title">
-        Today's random fact (kind of)
-      </div>
+      <div class="small-title">A random fact</div>
 
       <p id="fact">
         Octopuses have three hearts. Two pump blood to the
         gills, and one pumps it to the rest of the body.
       </p>
 
-      <button onclick="showFact()">
+      <button type="button" onclick="showFact()">
         Show me another
       </button>
 
@@ -115,26 +115,33 @@
       "A day on Venus is longer than its year.",
       "Honey can last a very long time when stored properly.",
       "Sharks are older than trees.",
-      "The Eiffel Tower can get a little taller in hot weather because metal expands.",
-      "Wombats make cube-shaped poop.",
+      "The Eiffel Tower can get taller in hot weather because metal expands.",
+      "Wombats produce cube-shaped droppings.",
       "The dot over a lowercase i or j is called a tittle.",
-      "Some turtles can breathe through specialised tissues near their rear end while underwater.",
-      "There are more possible chess games than atoms in the observable universe, depending on how the possibilities are counted.",
-      "A group of flamingos is often called a flamboyance.",
-      "Your brain itself doesn't have pain receptors, although the tissues around it do."
+      "Some turtles can absorb oxygen through specialised tissues while underwater.",
+      "The number of possible chess games is extraordinarily large.",
+      "A group of flamingos is called a flamboyance.",
+      "The brain itself has no pain receptors."
     ];
 
-    var current = 1;
+    var factsShown = 1;
+    var lastFact = 1;
 
     function showFact() {
-      var number = Math.floor(Math.random() * facts.length);
+      var number;
 
-      document.getElementById("fact").innerText = facts[number];
+      // Pick a different fact from the previous one.
+      do {
+        number = Math.floor(Math.random() * facts.length);
+      } while (number === lastFact);
 
-      current = number + 1;
+      document.getElementById("fact").textContent = facts[number];
 
-      document.getElementById("count").innerText =
-        "Fact " + current + " of " + facts.length;
+      lastFact = number;
+      factsShown++;
+
+      document.getElementById("count").textContent =
+        "Fact " + factsShown + " displayed";
     }
   </script>
 
