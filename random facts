@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Stuff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      background: #f4f1e8;
+      color: #292929;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 25px;
+    }
+
+    .page {
+      max-width: 650px;
+      margin: 50px auto;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 5px;
+    }
+
+    .intro {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: white;
+      border: 1px solid #ddd8cc;
+      border-radius: 8px;
+      padding: 25px;
+    }
+
+    .small-title {
+      color: #8a7654;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #fact {
+      font-size: 22px;
+      line-height: 1.5;
+      margin: 18px 0 25px;
+    }
+
+    button {
+      background: #d8e6bd;
+      color: #292929;
+      border: 1px solid #a9b78e;
+      border-radius: 5px;
+      padding: 11px 16px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #c8d9a9;
+    }
+
+    .bottom {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    footer {
+      margin-top: 45px;
+      color: #888;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <h1>Random Stuff</h1>
+    <p class="intro">
+      A website for facts you probably didn't need to know.
+    </p>
+
+    <div class="box">
+      <div class="small-title">
+        Today's random fact (kind of)
+      </div>
+
+      <p id="fact">
+        Octopuses have three hearts. Two pump blood to the
+        gills, and one pumps it to the rest of the body.
+      </p>
+
+      <button onclick="showFact()">
+        Show me another
+      </button>
+
+      <div class="bottom" id="count">Fact 1 of 12</div>
+    </div>
+
+    <footer>
+      Made out of boredom and a little curiosity.
+    </footer>
+
+  </div>
+
+  <script>
+    var facts = [
+      "Bananas are berries, but strawberries technically aren't.",
+      "Octopuses have three hearts. Two pump blood to the gills, and one pumps it to the rest of the body.",
+      "A day on Venus is longer than its year.",
+      "Honey can last a very long time when stored properly.",
+      "Sharks are older than trees.",
+      "The Eiffel Tower can get a little taller in hot weather because metal expands.",
+      "Wombats make cube-shaped poop.",
+      "The dot over a lowercase i or j is called a tittle.",
+      "Some turtles can breathe through specialised tissues near their rear end while underwater.",
+      "There are more possible chess games than atoms in the observable universe, depending on how the possibilities are counted.",
+      "A group of flamingos is often called a flamboyance.",
+      "Your brain itself doesn't have pain receptors, although the tissues around it do."
+    ];
+
+    var current = 1;
+
+    function showFact() {
+      var number = Math.floor(Math.random() * facts.length);
+
+      document.getElementById("fact").innerText = facts[number];
+
+      current = number + 1;
+
+      document.getElementById("count").innerText =
+        "Fact " + current + " of " + facts.length;
+    }
+  </script>
+
+</body>
+</html>
